@@ -24,7 +24,6 @@ const state = {
     
 }
 
-
 const playerSides = {
     player1: "player-cards",
     computer: "computer-cards",
@@ -98,6 +97,8 @@ async function setCardsField(cardId) {
     state.fieldCards.player.style.display = "block",
     state.fieldCards.computer.style.display = "block",
 
+    await hiddenCradetails();
+
     state.fieldCards.player.src = cardData[cardId].img;
     state.fieldCards.computer.src = cardData[computerCarid].img;
 
@@ -107,8 +108,15 @@ async function setCardsField(cardId) {
     await drawButton(duelResults)
 }
 
+async function hiddenCradetails() {
+    state.cardsSprites.avatar.src = "";
+    state.cardsSprites.name.innerText = "";
+    state.cardsSprites.type.innerText = "";
+}
+
 async function updateScore() {
     state.score.scoreBox.innerText = `Venceu: ${state.score.playScore} | Perdeu: ${state.score.computerScore}`
+    
 }
 
 async function drawButton(text) {
@@ -191,6 +199,9 @@ async function playAudioLose(status) {
 function init() {
     drawCards(5, playerSides.player1);
     drawCards(5, playerSides.computer);
+
+    const bgm = document.getElementById("bgm");
+    bgm.play()
 }
 
 init()
