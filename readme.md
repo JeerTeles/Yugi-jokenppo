@@ -8,4 +8,4 @@ conceitos abordados:
 - Funções limpas
 - Organização de código
 
-Parei na aula criando states engine
+Parei na aula implementando a logica de duelos
