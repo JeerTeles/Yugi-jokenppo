@@ -103,8 +103,37 @@ async function setCardsField(cardId) {
 
     let  duelResults = await checkDuelResults(cardId, computerCarid);
 
-    await pudateScore();
+    await updateScore();
     await drawButton(duelResults)
+}
+
+async function updateScore() {
+    state.score.scoreBox.innerText = `Venceu: ${state.score.playScore} | Perdeu: ${state.score.computerScore}`
+}
+
+async function drawButton(text) {
+    state.actions.button.innerText = text.toUpperCase();
+    state.actions.button.style.display = "block"; 
+}
+
+async function checkDuelResults(playerCardId, ComputerCardId) {
+    let duelResults = "Empate";
+    let playerCard = cardData[playerCardId]
+
+    if (playerCard.winOf.includes(ComputerCardId)) {
+        duelResults = "Ganhou";
+        await playAudioWin(duelResults);
+        state.score.playScore++;
+    } else if (playerCard.loseOf.includes(ComputerCardId)) {
+        duelResults = "Perdeu";
+        await playAudioLose(duelResults);
+        state.score.computerScore++;
+    } else {
+        await playAudioDraw(duelResults);
+    }
+    
+
+    return duelResults;
 }
 
 async function removeAllCardsImages() {
@@ -131,6 +160,31 @@ async function drawSelectCard(index) {
     state.cardsSprites.avatar.src = cardData[index].img;
     state.cardsSprites.name.innerText = cardData[index].name;
     state.cardsSprites.type.innerText = "Attibute : " + cardData[index].type;
+}
+
+async function resetDuel() {
+    state.cardsSprites.avatar.src = "";
+    state.actions.button.style.display = "none";
+
+    state.fieldCards.player.style.display = "none";
+    state.fieldCards.computer.style.display = "none";
+
+    init();
+}
+
+async function playAudioDraw(status) {
+    const audio = new Audio(`./src/assets/audios/${status}.mp3`);
+    audio.play()
+}
+
+async function playAudioWin(status) {
+    const audio = new Audio(`./src/assets/audios/${status}.wav`);
+    audio.play()
+}
+
+async function playAudioLose(status) {
+    const audio = new Audio(`./src/assets/audios/${status}.mp3`);
+    audio.play()
 }
 
 // função para chamar o estado inicial do jogo

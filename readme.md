@@ -8,4 +8,4 @@ conceitos abordados:
 - Funções limpas
 - Organização de código
 
-Parei na aula implementando a logica de duelos
+Parei na aula refatorando a tela de versus
