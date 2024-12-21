@@ -37,28 +37,50 @@ const cardData = [
         id: 0,
         name: "Blue Eyes White Dragon",
         type: "Paper",
-        img: `${pathImages}dragon.png`,
+        img: `${pathImages}Dragao-branco de olhos-azuis.jpg`,
         winOf: [1],
         loseOf: [2]
     },
 
     {
         id: 1,
-        name: "Dark Magician",
+        name: "Mago Negro",
         type: "Rock",
-        img: `${pathImages}magician.png`,
+        img: `${pathImages}Mago-Negro.jpg`,
         winOf: [2],
-        loseOf: [0]
+        loseOf: [0],
+        atk: 2500,
+        def: 2100
     },
 
     {
         id: 2,
         name: "Exodia",
         type: "Scissors",
-        img: `${pathImages}exodia.png`,
-        winOf: [0],
-        loseOf: [1]
-    }
+        img: `${pathImages}Exodia.jpg`,
+        winOf: [0, 3, 4],
+        loseOf: [1],
+        atk: 1000,
+        def: 1000
+    },
+
+    {
+        id: 3,
+        name: "Dragão Negro Olhos Vemelhos",
+        type: "Paper",
+        img: `${pathImages}red-dra.jpg`,
+        winOf: [1, 4],
+        loseOf: [2]
+    },
+
+    {
+        id: 4,
+        name: "Guadião Celta",
+        type: "Paper",
+        img: `${pathImages}Guardiao-Celta.jpg`,
+        winOf: [1],
+        loseOf: [2, 3]
+    },
 ]
 
 
@@ -83,8 +105,6 @@ async function createCardImage(IdCard, fieldSide) {
             drawSelectCard(IdCard)
         });
     }
-
- 
 
     return cardImage;
 }
@@ -125,21 +145,20 @@ async function drawButton(text) {
 }
 
 async function checkDuelResults(playerCardId, ComputerCardId) {
-    let duelResults = "Empate";
-    let playerCard = cardData[playerCardId]
+         let duelResults = "Empate";
+         let playerCard = cardData[playerCardId]
 
-    if (playerCard.winOf.includes(ComputerCardId)) {
-        duelResults = "Ganhou";
+     if (playerCard.winOf.includes(ComputerCardId)) {
+         duelResults = "Ganhou";
         await playAudioWin(duelResults);
-        state.score.playScore++;
-    } else if (playerCard.loseOf.includes(ComputerCardId)) {
-        duelResults = "Perdeu";
-        await playAudioLose(duelResults);
-        state.score.computerScore++;
-    } else {
+         state.score.playScore++;
+     } else if (playerCard.loseOf.includes(ComputerCardId)) {
+         duelResults = "Perdeu";
+         await playAudioLose(duelResults);
+         state.score.computerScore++;
+     } else {
         await playAudioDraw(duelResults);
-    }
-    
+     }
 
     return duelResults;
 }

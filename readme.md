@@ -8,4 +8,4 @@ conceitos abordados:
 - Funções limpas
 - Organização de código
 
-Parei na aula Fibalizei
+Parei na aula Finalizei
