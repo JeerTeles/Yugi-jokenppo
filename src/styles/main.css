@@ -71,6 +71,11 @@ a:hover {
     border-radius: 5px;
 }
 
+#card-image {
+    width: 500px;
+    height: 500px;
+}
+
 .card_details {
     background-color: #ffffff;
     padding: 1rem;

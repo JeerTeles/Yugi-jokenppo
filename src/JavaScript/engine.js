@@ -31,36 +31,70 @@ const playerSides = {
 
 const pathImages = "./src/assets/icons/";
 
-// vetor 
 const cardData = [
     {
         id: 0,
-        name: "Blue Eyes White Dragon",
-        type: "Paper",
-        img: `${pathImages}dragon.png`,
-        winOf: [1],
+        name: "Dragão Branco De Olhos Azuis",
+        type: "Dragão",
+        img: `${pathImages}Dragao-branco de olhos-azuis.jpg`,
+        winOf: [1, 4],
         loseOf: [2]
     },
 
     {
         id: 1,
-        name: "Dark Magician",
-        type: "Rock",
-        img: `${pathImages}magician.png`,
-        winOf: [2],
-        loseOf: [0]
+        name: "Mago Negro",
+        type: "Mago",
+        img: `${pathImages}Mago-Negro.jpg`,
+        winOf: [2, 5],
+        loseOf: [0],
     },
 
     {
         id: 2,
         name: "Exodia",
-        type: "Scissors",
-        img: `${pathImages}exodia.png`,
-        winOf: [0],
-        loseOf: [1]
-    }
-]
+        type: "Tessoura",
+        img: `${pathImages}Exodia.jpg`,
+        winOf: [0, 3, 4],
+        loseOf: [1],
+    },
 
+    {
+        id: 3,
+        name: "Dragão Negro De Olhos Vemelhos",
+        type: "Dragão",
+        img: `${pathImages}red-dra.jpg`,
+        winOf: [1, 4],
+        loseOf: [2]
+    },
+
+    {
+        id: 4,
+        name: "Guardião Celta",
+        type: "Guerreiro",
+        img: `${pathImages}Guardiao-Celta.jpg`,
+        winOf: [1],
+        loseOf: [2, 3]
+    },
+
+    {
+        id: 5,
+        name: "Dragão Amaldiçoado",
+        type: "Dragão",
+        img: `${pathImages}dragão-amaldiçoado.jpg`,
+        winOf: [1, 4],
+        loseOf: [2]
+    },
+
+    {
+        id: 6,
+        name: "Cavaleiro Gaia",
+        type: "Cavaleiro",
+        img: `${pathImages}cavaleiro-gaia.jpg`,
+        winOf: [2, 4, 5],
+        loseOf: [1, 2]
+    },
+]
 
 async function getRandomCardId() {
     const randomIndex = Math.floor(Math.random() * cardData.length);
@@ -167,7 +201,7 @@ async function drawCards(cardNumber, fieldSide) {
 async function drawSelectCard(index) {
     state.cardsSprites.avatar.src = cardData[index].img;
     state.cardsSprites.name.innerText = cardData[index].name;
-    state.cardsSprites.type.innerText = "Attibute : " + cardData[index].type;
+    state.cardsSprites.type.innerText = "Tipo : " + cardData[index].type;
 }
 
 async function resetDuel() {
