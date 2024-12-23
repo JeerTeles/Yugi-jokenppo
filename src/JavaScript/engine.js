@@ -37,7 +37,8 @@ const cardData = [
         name: "Dragão Branco De Olhos Azuis",
         type: "Dragão",
         img: `${pathImages}Dragao-branco de olhos-azuis.jpg`,
-        winOf: [1, 4],
+        winOf: [1, 4, 5],
+        loseOf: [2]
     },    
 
     {
