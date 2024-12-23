@@ -43,7 +43,7 @@ const cardData = [
     {
         id: 1,
         name: "Mago Negro",
-        type: "Rock",
+        type: "Mago",
         img: `${pathImages}Mago-Negro.jpg`,
         winOf: [2],
         loseOf: [0],
@@ -54,7 +54,7 @@ const cardData = [
     {
         id: 2,
         name: "Exodia",
-        type: "Scissors",
+        type: "Tessoura",
         img: `${pathImages}Exodia.jpg`,
         winOf: [0, 3, 4],
         loseOf: [1],
@@ -65,7 +65,7 @@ const cardData = [
     {
         id: 3,
         name: "Dragão Negro Olhos Vemelhos",
-        type: "Paper",
+        type: "Dragão",
         img: `${pathImages}red-dra.jpg`,
         winOf: [1, 4],
         loseOf: [2]
@@ -74,7 +74,7 @@ const cardData = [
     {
         id: 4,
         name: "Guadião Celta",
-        type: "Paper",
+        type: "Guerreiro",
         img: `${pathImages}Guardiao-Celta.jpg`,
         winOf: [1],
         loseOf: [2, 3]
